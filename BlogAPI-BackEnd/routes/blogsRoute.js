@@ -2,6 +2,8 @@ const express = require('express')
 const authMiddleware = require('../middleware/authMiddleware')
 const blogModel = require('../models/BlogSchema')
 const router = express.Router()
+const dayjs = require('dayjs');
+const moment=require('moment')
 const app = express()
 
 /**
@@ -115,9 +117,13 @@ router.get('/:id', authMiddleware, async (req, res) => {
  *         description: Some server error
  */
 router.post('/', authMiddleware, async (req, res) => {
+   
     const data = req.body
     data.user = req.user.id
     data.created_by=req.user.username
+    // data.created_at=dayjs().format('MM/DD/YYYY');
+    data.created_at=moment().format('MMMM Do YYYY, h:mm:ss a');
+
     // created by the username
     // data.created_by=req.user.username
     console.log(data, 'this is on post')

@@ -2,11 +2,11 @@ const mongoose=require('mongoose')
 const BlogSchema=mongoose.Schema({
     created_by:{ 
         type:String, 
-        required:true
+        required:false
     },
     created_at:{ 
-        type: Date,
-        default: Date.now()
+        type: String,
+   
     },
     blog_title: {
         type:String, 
